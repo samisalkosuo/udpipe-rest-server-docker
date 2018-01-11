@@ -13,7 +13,7 @@ WORKDIR /udpipe/udpipe-master/src
 #make udpipe
 RUN make 
 
-ENV TRAINING_MODEL_FILE_NAME <enter model file name here>
+ENV TRAINING_MODEL_FILE_NAME <enter training model file name here>
 #set your model name is like: fi_20180811.model
 ENV MODEL_FILE_NAME <model file name here>
 
