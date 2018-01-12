@@ -1,5 +1,5 @@
 training/models*
 training/training_files
 test/
-training/training_*.dockerfile
-rest_server_*dockerfile
+training/training_fi.dockerfile
+rest_server_fi.dockerfile
