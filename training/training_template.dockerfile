@@ -26,7 +26,7 @@ RUN ./udpipe --train ${MODEL_FILE_NAME} ${TRAINING_MODEL_FILE_NAME}
 #web server to download model
 RUN mkdir models
 RUN cp ${MODEL_FILE_NAME} ./models
-WORKDIR /udpipe/udpipe/src/models
+WORKDIR /udpipe/udpipe-master/src/models
 EXPOSE 8000
 CMD python -m SimpleHTTPServer
 #CMD ["/bin/bash"]
