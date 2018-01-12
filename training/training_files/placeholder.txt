@@ -1,0 +1,3 @@
+Copy CoNLL-U formatted training files here.
+
+Get training files from https://github.com/UniversalDependencies.
