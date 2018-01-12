@@ -59,9 +59,8 @@ During training, we trained the model file to be used with UDPipe REST server. F
 1. Access and test using browser: [http://127.0.0.1:8080/process?data=Hei%20maailma!Mitä%20kuuluu?&tokenizer&tagger&parser](http://127.0.0.1:8080/process?data=Hei%20maailma!Mitä%20kuuluu?&tokenizer&tagger&parser) 
 
 [See also documentation about the REST server](http://ufal.mff.cuni.cz/udpipe/users-manual#udpipe_server).
-rest server here: 
 
-You can also use curl to test:
+You can use curl to test:
 
 - curl -F data=@test/text.txt -F tokenizer= -F tagger= -F parser= http://127.0.0.1:8080/process
 
