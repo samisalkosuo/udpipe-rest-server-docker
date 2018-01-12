@@ -6,7 +6,7 @@ UDPipe is trainable pipeline for tokenizing, tagging, lemmatizing and parsing Un
 
 ## Usage
 
-To use UDPipe REST server, you need to:
+To use UDPipe REST server Docker image, you need to:
 
 - Find a language model.
   - Train it or get if from somewhere.
