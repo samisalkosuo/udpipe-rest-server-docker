@@ -72,7 +72,7 @@ To get CoNLL-U back, use this:
 
 [Universal Dependencies](https://github.com/UniversalDependencies/) includes quite many languages and each of them have training files. All of them can be used to build model for the UDPipe REST server.
 
-Many models can be included in single REST server Docker image. See UDPipe docs how to start server with many models and change Docker file accordingly.
+Many models can be included in single REST server Docker image. See [UDPipe docs](http://ufal.mff.cuni.cz/udpipe/users-manual#udpipe_server) how to start server with many models and change Docker file accordingly.
 
 Pre-existing models can be also used. You can find some models from [UDPipe web site](http://ufal.mff.cuni.cz/udpipe) licensed under the [CC-BY-SA](http://creativecommons.org/licenses/by-nc-sa/4.0/).
 
