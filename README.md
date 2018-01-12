@@ -9,7 +9,7 @@ UDPipe is trainable pipeline for tokenizing, tagging, lemmatizing and parsing Un
 To use UDPipe REST server, you need to:
 
 - Find a language model.
-  - Train it or get if from somwhere.
+  - Train it or get if from somewhere.
 - To train a modeL:
   - Get a training file. For example, from [Universal Dependencies](https://github.com/UniversalDependencies/).
   - Train UDPipe for the language.
@@ -27,9 +27,9 @@ Training needs some manual steps.
 1. Create directory *training_files* under *training*-directory.
 1. Download Finnish training file [fi-ud-train.conllu](https://github.com/UniversalDependencies/UD_Finnish/blob/master/fi-ud-train.conllu) to *training_files*-directory.
    - GitHub repo of the file is: [UD_Finnish](https://github.com/UniversalDependencies/UD_Finnish)
-1. Copy *training/template.dockerfile* to *training/training_fi.dockerfile*.
+1. Copy *training/training_template.dockerfile* to *training/training_fi.dockerfile*.
 1. Find ENV-entries in the *training_fi.dockerfile* :
-   - Set training file name in *training_files*-directory.
+   - Set training file name in *training_files*-directory. Finnish training file: *fi-ud-train.conllu*.
    - Set model name. For example: *fi_20180111.model*.
 1. Start training by executing docker build:
    - Change to *training*-directory.
@@ -46,7 +46,7 @@ The next step is to build REST-server Docker image using the model file you just
 
 During training, we trained the model file to be used with UDPipe REST server. Follow the instructions to build the actual REST server image.
 
-1. Copy *template.dockerfile* to *rest_server_fi.dockerfile*.
+1. Copy *rest_server_template.dockerfile* to *rest_server_fi.dockerfile*.
 1. Open *rest_server_fi.dockerfile* and find ENV-entries
    - change *MODEL_FILE_NAME* to the model name from previous section
      - For example: *fi*
