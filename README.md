@@ -37,7 +37,7 @@ Training needs some manual steps.
 1. Wait... wait... wait for it...
 1. Eventually, start the Docker-container:
    - *docker run -it --rm -p 8000:8000 training_fi*
-1. Use browser to [localhost](http://127.0.0.1:8000).
+1. Use browser and go to [http://127.0.0.1:8000](http://127.0.0.1:8000).
    - Download model file to *training/models*-directory.
 
 The next step is to build REST-server Docker image using the model file you just downloaded.
@@ -62,11 +62,11 @@ During training, we trained the model file to be used with UDPipe REST server. F
 
 You can use curl to test:
 
-- curl -F data=@test/text.txt -F tokenizer= -F tagger= -F parser= http://127.0.0.1:8080/process
+- curl -F data=@data/text.txt -F tokenizer= -F tagger= -F parser= http://127.0.0.1:8080/process
 
 To get CoNLL-U back, use this:
 
-- curl -F data=@test/text.txt -F tokenizer= -F tagger= -F parser= http://127.0.0.1:8080/process | PYTHONIOENCODING=utf-8 python -c "import sys,json; sys.stdout.write(json.load(sys.stdin)['result'])"
+- curl -F data=@data/text.txt -F tokenizer= -F tagger= -F parser= http://127.0.0.1:8080/process | PYTHONIOENCODING=utf-8 python -c "import sys,json; sys.stdout.write(json.load(sys.stdin)['result'])"
 
 ## Misc notes
 
