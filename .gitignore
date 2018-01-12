@@ -5,3 +5,4 @@ training/training_fi.dockerfile
 training/training_se.dockerfile
 rest_server_fi.dockerfile
 rest_server_se.dockerfile
+work/

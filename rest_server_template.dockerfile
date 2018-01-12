@@ -30,7 +30,7 @@ ADD training/models/${MODEL_FILE_NAME} .
 EXPOSE 8080
 #start udpipe REST server
 #using custom model
-CMD ./udpipe_server 8080 fi fi ./${MODEL_FILE_NAME} "${MODEL_DESC}"
+CMD ./udpipe_server 8080 ${MODEL_NAME} ${MODEL_NAME} ./${MODEL_FILE_NAME} "${MODEL_DESC}"
 
 #CMD ["/bin/bash"]
 
