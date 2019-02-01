@@ -25,8 +25,8 @@ Training needs some manual steps.
 
 1. Download or clone this repository to your computer.
 1. Create directory *training_files* under *training*-directory.
-1. Download Finnish training file [fi-ud-train.conllu](https://github.com/UniversalDependencies/UD_Finnish/blob/master/fi-ud-train.conllu) to *training_files*-directory.
-   - GitHub repo of the file is: [UD_Finnish](https://github.com/UniversalDependencies/UD_Finnish)
+1. Download Finnish training file [fi_tdt-ud-train.conllu](https://github.com/UniversalDependencies/UD_Finnish-TDT/blob/master/fi_tdt-ud-train.conllu) to *training_files*-directory.
+   - GitHub repo of the file is: [UD_Finnish-TDT](https://github.com/UniversalDependencies/UD_Finnish-TDT)
 1. Copy *training/training_template.dockerfile* to *training/training_fi.dockerfile*.
 1. Find ENV-entries in the *training_fi.dockerfile* :
    - Set training file name in *training_files*-directory. Finnish training file: *fi-ud-train.conllu*.
