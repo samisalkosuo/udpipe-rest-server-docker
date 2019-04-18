@@ -25,12 +25,12 @@ Training needs some manual steps.
 
 . Download or clone this repository to your computer.
 . Create directory _training_files_ under _training_-directory.
-. Download Finnish training file https://github.com/UniversalDependencies/UD_Finnish/blob/master/fi-ud-train.conllu[fi-ud-train.conllu] to _training_files_-directory.
+. Download Finnish training file https://github.com/UniversalDependencies/UD_Finnish-TDT/blob/master/fi_tdt-ud-train.conllu[fi_tdt-ud-train.conllu] to _training_files_-directory.
 ** GitHub repo of the file is: https://github.com/UniversalDependencies/UD_Finnish-TDT[UD_Finnish-TDT]
 . Copy _training/training_template.dockerfile_ to _training/training_fi.dockerfile_.
 . Find ENV-entries in the _training_fi.dockerfile_:
 ** Set training file name in _training_files_-directory.
-*** Finnish training file: _fi-ud-train.conllu_.
+*** Finnish training file: _fi_tdt-ud-train.conllu_.
 ** Set model name. For example: _fi_20180111.model_.
 . Start training by executing docker build:
 ** Change to _training_-directory.
