@@ -1,0 +1,89 @@
+= UDPipe REST server Docker
+
+Docker container for UDPipe (https://github.com/ufal/udpipe) REST server. 
+
+UDPipe is trainable pipeline for tokenizing, tagging, lemmatizing and parsing Universal Treebanks and other CoNLL-U files.
+
+== Usage
+
+To use UDPipe REST server Docker image, you need to:
+
+* Find a language model.
+** Train it or get if from somewhere.
+* To train a modeL:
+** Get a training file. For example, from https://github.com/UniversalDependencies/[Universal Dependencies].
+** Train UDPipe for the language.
+* Build Docker image with the language model.
+* Run Docker image.
+* Use it.
+
+Example how to use is described below. It shows how to train UDPipe for Finnish and create UDPipe REST server Docker image for Finnish.
+
+== Training
+
+Training needs some manual steps.
+
+. Download or clone this repository to your computer.
+. Create directory _training_files_ under _training_-directory.
+. Download Finnish training file https://github.com/UniversalDependencies/UD_Finnish/blob/master/fi-ud-train.conllu[fi-ud-train.conllu] to _training_files_-directory.
+** GitHub repo of the file is: https://github.com/UniversalDependencies/UD_Finnish[UD_Finnish]
+. Copy _training/training_template.dockerfile_ to _training/training_fi.dockerfile_.
+. Find ENV-entries in the _training_fi.dockerfile_:
+** Set training file name in _training_files_-directory.
+*** Finnish training file: _fi-ud-train.conllu_.
+** Set model name. For example: _fi_20180111.model_.
+. Start training by executing docker build:
+** Change to _training_-directory.
+** `docker build -t training_fi -f training_fi.dockerfile .`
+. Wait... wait... wait for it...
+. Eventually, start the Docker-container:
+** `docker run -it --rm -p 8000:8000 training_fi`
+. Use browser and go to http://127.0.0.1:8000[http://127.0.0.1:8000].
+** Download model file to _training/models_-directory.
+
+The next step is to build REST-server Docker image using the model file you just downloaded.
+
+== REST server
+
+During training, we trained the model file to be used with UDPipe REST server. Follow the instructions to build the actual REST server image.
+
+. Copy _rest_server_template.dockerfile_ to _rest_server_fi.dockerfile_.
+. Open _rest_server_fi.dockerfile_ and find ENV-entries
+** change _MODEL_FILE_NAME_ to the model name from previous section
+*** For example: _fi_
+** change _MODEL_NAME_ and _MODEL_DESC_ to some descriptive name.
+*** For example: _finnish_model_20180112_
+. Build Docker image:
+** `docker build -t udpipe-rest-server-fi -f rest_server_fi.dockerfile .`
+. Run Docker image:
+** `docker run -it --rm -p 8080:8080 -t udpipe-rest-server-fi`
+. Access and test using browser: 
+** http://127.0.0.1:8080/process?data=Hei%20maailma!Mitä%20kuuluu?&tokenizer&tagger&parser[http://127.0.0.1:8080/process?data=Hei%20maailma!Mitä%20kuuluu?&tokenizer&tagger&parser]
+
+http://ufal.mff.cuni.cz/udpipe/users-manual#udpipe_server[See also documentation about the REST server].
+
+You can use curl to test:
+
+* `curl -F data=@data/text.txt -F tokenizer= -F tagger= -F parser= http://127.0.0.1:8080/process`
+
+To get CoNLL-U back, use this:
+
+* `curl -F data=@data/text.txt -F tokenizer= -F tagger= -F parser= http://127.0.0.1:8080/process | PYTHONIOENCODING=utf-8 python -c "import sys,json; sys.stdout.write(json.load(sys.stdin)['result'])"``
+
+== Misc notes
+
+https://github.com/UniversalDependencies/[Universal Dependencies] includes quite many languages and each of them have training files. All of them can be used to build model for the UDPipe REST server.
+
+Many models can be included in single REST server Docker image. See http://ufal.mff.cuni.cz/udpipe/users-manual#udpipe_server[UDPipe docs] how to start server with many models and change Docker file accordingly.
+
+Pre-existing models can be also used. You can find some models from http://ufal.mff.cuni.cz/udpipe[UDPipe web site] licensed under the http://creativecommons.org/licenses/by-nc-sa/4.0/[CC-BY-SA].
+
+== Disclaimer
+
+Everything in this repo, including all code is "AS IS". No support, no warranty, no fitness for any purpose, nothing is expressed or implied, not by me (nor my employer).
+
+== License
+
+I am not sure what license to apply, so I don't claim any licensing.
+
+If you want to know more and be sure, please seek legal advice.
