@@ -1,7 +1,7 @@
 FROM ubuntu
 
 RUN apt-get update
-RUN apt-get -y install gcc clang build-essential wget unzip 
+RUN apt-get -y install gcc clang build-essential wget unzip python
 
 #get udpipe code
 WORKDIR /udpipe
